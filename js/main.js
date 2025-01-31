@@ -66,19 +66,21 @@ eventos.forEach((evento) => {
             <p><strong>Productora:</strong> ${evento.productora}</p>
             <p><strong>Lugar:</strong> ${evento.lugar}</p>
             <p><strong>Fecha:</strong> ${evento.fecha}</p>
-            <a href="${evento.enlace}" class="event-info-link">Más información</a>
+            <a href="${evento.enlace}" target="_blank" class="event-info-link">Más información</a>
             <a href="#" class="event-like-link">Me interesa</a>
           </div>`;
   contenedor.appendChild(card);
 });
 
-const totalEventos = document.querySelectorAll(".event-info");
-console.log(totalEventos);
-const buscar = document.getElementById("buscar");
-buscar.addEventListener("input", function () {
-  console.log(buscar.value);
+// const totalEventos = document.querySelectorAll(".event-info");
+// console.log(totalEventos);
+// const buscar = document.getElementById("buscar");
+// buscar.addEventListener("input", function () {
+//   console.log(buscar.value);
+//   if (buscar.value =  )  {
 
-  totalEventos.forEach((evento) => {
-    console.log(evento.querySelector("h2").textContent);
-  });
-});
+//   }
+//   totalEventos.forEach((evento) => {
+//     console.log(evento.querySelector("h2").textContent);
+//   });
+// });
