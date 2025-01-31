@@ -80,7 +80,7 @@ buscar.addEventListener("input", function () {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
-  //console.log(buscarText);
+  // console.log(buscarText);
   todosLosEventos.forEach((evento) => {
     const auxNombre = evento
       .querySelector("h2")
@@ -92,8 +92,8 @@ buscar.addEventListener("input", function () {
       .textContent.normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "") //normalizar el texto a minusculas y sin signos especiales
       .toLowerCase();
-    //console.log(auxNombre);
-    //console.log(auxLugar);
+    // console.log(auxNombre);
+    // console.log(auxLugar);
     if (auxNombre.includes(buscarText) || auxLugar.includes(buscarText)) {
       evento.style.display = "block";
     } else {
