@@ -98,7 +98,7 @@ buscar.addEventListener("input", function () {
     // console.log(auxNombre);
     // console.log(auxLugar);
     if (auxNombre.includes(buscarText) || auxLugar.includes(buscarText)) {
-      evento.style.display = "block";
+      evento.style.display = "flex";
     } else {
       evento.style.display = "none";
     }
