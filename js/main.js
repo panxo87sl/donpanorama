@@ -1,7 +1,7 @@
 const eventos = [
   {
     id: 1,
-    imagen: "https://picsum.photos/300?random=1",
+    imagen: "https://static.ptocdn.net/images/eventos/fv2025_calugalistado.jpg",
     nombre: "Festival Internacional de la Canción de Viña del Mar",
     productora: "BIZARRO LIVE ENTERTAINMENT",
     lugar: "Quinta Vergara - Viña del Mar",
@@ -10,7 +10,7 @@ const eventos = [
   },
   {
     id: 2,
-    imagen: "https://picsum.photos/300?random=2",
+    imagen: "https://static.ptocdn.net/images/eventos/lot181_calugalistado.jpg",
     nombre: "Lucybell",
     productora: "LOTUS",
     lugar: "Movistar Arena - Santiago",
@@ -19,7 +19,7 @@ const eventos = [
   },
   {
     id: 3,
-    imagen: "https://picsum.photos/300?random=3",
+    imagen: "https://static.ptocdn.net/images/eventos/biz305_calugalistado.jpg",
     nombre: "Illapu Sinfónico",
     productora: "BIZARRO LIVE ENTERTAINMENT",
     lugar: "Movistar Arena - Santiago",
@@ -28,7 +28,7 @@ const eventos = [
   },
   {
     id: 4,
-    imagen: "https://picsum.photos/300?random=4",
+    imagen: "https://static.ptocdn.net/images/eventos/nxo032_calugalistado.jpg",
     nombre: "Japan Expo",
     productora: "NoiX Tours Organization SPA",
     lugar: "Centro Cultural Estación Mapocho - Santiago",
@@ -37,7 +37,7 @@ const eventos = [
   },
   {
     id: 5,
-    imagen: "https://picsum.photos/300?random=5",
+    imagen: "https://static.ptocdn.net/images/eventos/ptp300_calugalistado.jpg",
     nombre: "Gira Concierto Acustico los Jaivas",
     productora: "4Parlantes",
     lugar: "Teatro Municipal - Antofagasta",
@@ -46,7 +46,8 @@ const eventos = [
   },
   {
     id: 6,
-    imagen: "https://picsum.photos/300?random=6",
+    imagen:
+      "https://static.ptocdn.net/images/eventos/rec085v2_calugalistado.jpg",
     nombre: "Master of Rock",
     productora: "The FanLab Producciones SpA",
     lugar: "Movistar Arena - Santiago",
@@ -65,9 +66,11 @@ eventos.forEach((evento) => {
             <h2>${evento.nombre}</h2>
             <p id:"productora" ><strong>Productora:</strong> ${evento.productora}</p>
             <p id:"lugar"><strong>Lugar:</strong> ${evento.lugar}</p>
-            <p id:"fecha" ><strong>Fecha:</strong> ${evento.fecha}</p>
+            <p id:"fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
+            <div class="event-info-buttons" id:"botones">
             <a href="${evento.enlace}" target="_blank" class="event-info-link" id:"enlace">Más información</a>
             <a href="#" class="event-like-link" id:"like">Me interesa</a>
+            </div>
           </div>`;
   contenedor.appendChild(card);
 });

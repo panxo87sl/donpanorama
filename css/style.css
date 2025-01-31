@@ -43,6 +43,8 @@ main {
   gap: 20px;
 }
 .event-card {
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -58,10 +60,19 @@ main {
   object-fit: cover;
 }
 .event-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   padding: 1rem;
 }
 .event-info h2 {
   margin-top: 0;
+}
+.event-info-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  gap: 10px;
 }
 .event-info-link {
   display: inline-block;
