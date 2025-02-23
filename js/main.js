@@ -1,82 +1,164 @@
-const eventos = [
-  {
-    id: 1,
-    imagen: "https://static.ptocdn.net/images/eventos/fv2025_calugalistado.jpg",
-    nombre: "Festival Internacional de la Canción de Viña del Mar",
-    productora: "BIZARRO LIVE ENTERTAINMENT",
-    lugar: "Quinta Vergara - Viña del Mar",
-    fecha: "23 Febrero 2025",
-    enlace: "https://www.puntoticket.com/festival-de-vina",
-  },
-  {
-    id: 2,
-    imagen: "https://static.ptocdn.net/images/eventos/lot181_calugalistado.jpg",
-    nombre: "Lucybell",
-    productora: "LOTUS",
-    lugar: "Movistar Arena - Santiago",
-    fecha: "29 Enero 2025",
-    enlace: "https://www.puntoticket.com/lucybell-2025",
-  },
-  {
-    id: 3,
-    imagen: "https://static.ptocdn.net/images/eventos/biz305_calugalistado.jpg",
-    nombre: "Illapu Sinfónico",
-    productora: "BIZARRO LIVE ENTERTAINMENT",
-    lugar: "Movistar Arena - Santiago",
-    fecha: "27 Julio 2025",
-    enlace: "https://www.puntoticket.com/illapu-sinfonico",
-  },
-  {
-    id: 4,
-    imagen: "https://static.ptocdn.net/images/eventos/nxo032_calugalistado.jpg",
-    nombre: "Japan Expo",
-    productora: "NoiX Tours Organization SPA",
-    lugar: "Centro Cultural Estación Mapocho - Santiago",
-    fecha: "23 Mayo 2025",
-    enlace: "https://www.puntoticket.com/sje2025",
-  },
-  {
-    id: 5,
-    imagen: "https://static.ptocdn.net/images/eventos/ptp300_calugalistado.jpg",
-    nombre: "Gira Concierto Acustico los Jaivas",
-    productora: "4Parlantes",
-    lugar: "Teatro Municipal - Antofagasta",
-    fecha: "23 Marzo 2025",
-    enlace: "https://www.puntoticket.com/giraconciertoacusticolosjaivas2025",
-  },
-  {
-    id: 6,
-    imagen:
-      "https://static.ptocdn.net/images/eventos/rec085v2_calugalistado.jpg",
-    nombre: "Master of Rock",
-    productora: "The FanLab Producciones SpA",
-    lugar: "Movistar Arena - Santiago",
-    fecha: "23 Abril 2025",
-    enlace: "https://www.puntoticket.com/masters-of-rock",
-  },
-];
+//----------------------------------------------INICIO Carga de datos---------------------------------------------------//
+import Evento from "./Evento.js";
+import MiAgenda from "./MiAgenda.js";
+const agenda = new MiAgenda();
+const listaEventos = [];
+function baseEventos() {
+  const evento1 = new Evento(
+    1,
+    "https://static.ptocdn.net/images/eventos/fv2025_calugalistado.jpg",
+    "Festival Internacional de la Canción de Viña del Mar",
+    "BIZARRO LIVE ENTERTAINMENT",
+    "Quinta Vergara - Viña del Mar",
+    "23 Febrero 2025",
+    "https://www.puntoticket.com/festival-de-vina"
+  );
+  const evento2 = new Evento(
+    2,
+    "https://static.ptocdn.net/images/eventos/lot181_calugalistado.jpg",
+    "Lucybell",
+    "LOTUS",
+    "Movistar Arena - Santiago",
+    "29 Enero 2025",
+    "https://www.puntoticket.com/lucybell-2025"
+  );
+  const evento3 = new Evento(
+    3,
+    "https://static.ptocdn.net/images/eventos/biz305_calugalistado.jpg",
+    "Illapu Sinfónico",
+    "BIZARRO LIVE ENTERTAINMENT",
+    "Movistar Arena - Santiago",
+    "27 Julio 2025",
+    "https://www.puntoticket.com/illapu-sinfonico"
+  );
+  const evento4 = new Evento(
+    4,
+    "https://static.ptocdn.net/images/eventos/nxo032_calugalistado.jpg",
+    "Japan Expo",
+    "NoiX Tours Organization SPA",
+    "Centro Cultural Estación Mapocho - Santiago",
+    "23 Mayo 2025",
+    "https://www.puntoticket.com/sje2025"
+  );
+  const evento5 = new Evento(
+    5,
+    "https://static.ptocdn.net/images/eventos/ptp300_calugalistado.jpg",
+    "Gira Concierto Acustico los Jaivas",
+    "4Parlantes",
+    "Teatro Municipal - Antofagasta",
+    "23 Marzo 2025",
+    "https://www.puntoticket.com/giraconciertoacusticolosjaivas2025"
+  );
+  const evento6 = new Evento(
+    6,
+    "https://static.ptocdn.net/images/eventos/rec085v2_calugalistado.jpg",
+    "Master of Rock",
+    "The FanLab Producciones SpA",
+    "Movistar Arena - Santiago",
+    "23 Abril 2025",
+    "https://www.puntoticket.com/masters-of-rock"
+  );
+  listaEventos.push(evento1, evento2, evento3, evento4, evento5, evento6);
+}
+baseEventos();
+console.log(listaEventos);
+agenda.mostrarAgenda();
+//----------------------------------------------FIN Carga de datos---------------------------------------------------//
+
+// class MiAgenda {
+//   constructor() {
+//     //Inicializo "el carrito" si es que esta en localStoge si no vacio.
+//     this.eventosInteres = JSON.parse(localStorage.getItem("agenda")) || [];
+
+//     this.agregarEvento = function (evento) {
+//       if (!this.existeEvento(evento.id)) {
+//         //Verifico si el evento existe antes de agregar ya que en este contexto no pueden haber eventos repetidos en el carrito
+//         this.eventosInteres.push(evento);
+//         this.guardarEnStorage();
+//         console.log(
+//           `${evento.nombre} con ID ${evento.id} agregado a mi agenda`
+//         );
+//       } else {
+//         console.log(`Evento ya existe en la agenda`);
+//       }
+//     };
+
+//     this.mostrarAgenda = function () {
+//       if (this.eventosInteres.length === 0) {
+//         console.log("Mi agenda esta vacia");
+//       } else {
+//         console.log(this.eventosInteres);
+//       }
+//     };
+
+//     this.guardarEnStorage = function () {
+//       localStorage.setItem("agenda", JSON.stringify(this.eventosInteres));
+//     };
+
+//     this.existeEvento = function (idEvento) {
+//       //buscco si el evento existe
+//       return this.eventosInteres.some((aux) => aux.id === idEvento);
+//     };
+
+//     this.eliminarEvento = function (idEvento) {
+//       if (this.existeEvento(idEvento)) {
+//         this.eventosInteres = this.eventosInteres.filter(
+//           (aux) => aux.id !== idEvento
+//         );
+//         this.guardarEnStorage();
+//         console.log(`${idEvento} eliminado de mi agenda.`);
+//       } else {
+//         console.log(`El evento "${idEvento}" no está en la agenda.`);
+//       }
+//     };
+//   }
+// }
+// agenda.agregarEvento(listaEventos[4]);
+// agenda.mostrarAgenda();
+// agenda.eliminarEvento(3);
+// agenda.mostrarAgenda();
 
 const contenedor = document.getElementById("lista-eventos");
-
-eventos.forEach((evento) => {
+listaEventos.forEach((evento) => {
   const card = document.createElement("article");
   card.classList.add("event-card");
   card.innerHTML = `<img src="${evento.imagen}" alt="${evento.nombre}"/>
-          <div class="event-info" id="informacion">
-            <h2>${evento.nombre}</h2>
-            <p id:"productora" ><strong>Productora:</strong> ${evento.productora}</p>
-            <p id:"lugar"><strong>Lugar:</strong> ${evento.lugar}</p>
-            <p id:"fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
-            <div class="event-info-buttons" id:"botones">
-            <a href="${evento.enlace}" target="_blank" class="event-info-link" id:"enlace">Más información</a>
-            <a href="#" class="event-like-link" id:"like">Me interesa</a>
-            </div>
-          </div>`;
+                    <div class="event-info" id="informacion">
+                      <h2>${evento.nombre}</h2>
+                      <p id:"productora" ><strong>Productora:</strong> ${evento.productora}</p>
+                      <p id:"lugar"><strong>Lugar:</strong> ${evento.lugar}</p>
+                      <p id:"fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
+                      <p id:"id-evento"><strong>ID:</strong> ${evento.id}</p>
+                      <div class="event-info-buttons" id:"botones">
+                        <a href="${evento.enlace}" target="_blank" class="event-info-link" id:"enlace">Más información</a>
+                        <a href="#" class="event-like-link" data-id:"${evento.id}" id:"like">Me interesa</a>
+                      </div>
+                    </div>`;
   contenedor.appendChild(card);
 });
 
+function buscarIndiceEvento(idEvento) {
+  return listaEventos.findIndex((evento) => evento.id === idEvento);
+}
+const listaLikeButtons = document.querySelectorAll(".event-like-link"); //busca todos los botones "Me Interesa"
+console.log(listaLikeButtons);
+listaLikeButtons.forEach((auxButon) => {
+  auxButon.addEventListener("click", function () {
+    let idEvento = this.dataset.id; // Suponiendo que el botón tiene `data-nombre="Nombre Evento"`
+    console.log("Evento es", idEvento);
+    let auxIndice = buscarIndiceEvento(idEvento);
+
+    if (auxIndice !== -1) {
+      agenda.agregarEvento(listaEventos[auxIndice]);
+    } else {
+      console.log("Evento no encontrado.");
+    }
+    agenda.mostrarAgenda();
+  });
+});
+
 const todosLosEventos = document.querySelectorAll(".event-card"); //lista de todos los eventos
-const buscar = document.getElementById("buscar"); //input "bucar"
+const buscar = document.getElementById("buscar"); //input "buscar"
 
 buscar.addEventListener("input", function () {
   const buscarText = buscar.value
