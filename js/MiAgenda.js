@@ -49,15 +49,25 @@ export default class MiAgenda {
       return this.eventosInteres.some((aux) => aux.id === idEvento);
     };
 
-    this.eliminarEvento = function (idEvento) {
-      if (this.existeEvento(idEvento)) {
+    this.eliminarEvento = function (evento) {
+      if (this.existeEvento(evento.id)) {
         this.eventosInteres = this.eventosInteres.filter(
-          (aux) => aux.id !== idEvento
+          (aux) => aux.id !== evento.id
         );
         this.guardarEnStorage();
-        console.log(`${idEvento} eliminado de mi agenda.`);
+        console.log(
+          `${evento.nombre} con ID ${evento.id} eliminado de mi agenda`
+        );
+        Toastify({
+          text: `Evento "${evento.nombre}" eliminado de mi agenda.`,
+          className: "toast-eliminated", // Para el caso de éxito
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
+        }).showToast();
       } else {
-        console.log(`El evento "${idEvento}" no está en la agenda.`);
+        console.log(`El evento "${evento.id}" no está en la agenda.`);
       }
     };
   }

@@ -61,63 +61,8 @@ function baseEventos() {
   listaEventos.push(evento1, evento2, evento3, evento4, evento5, evento6);
 }
 baseEventos();
-console.log("Lista de eventos: ", listaEventos);
-agenda.mostrarAgenda();
 //----------------------------------------------FIN Carga de datos---------------------------------------------------//
-
-// class MiAgenda {
-//   constructor() {
-//     //Inicializo "el carrito" si es que esta en localStoge si no vacio.
-//     this.eventosInteres = JSON.parse(localStorage.getItem("agenda")) || [];
-
-//     this.agregarEvento = function (evento) {
-//       if (!this.existeEvento(evento.id)) {
-//         //Verifico si el evento existe antes de agregar ya que en este contexto no pueden haber eventos repetidos en el carrito
-//         this.eventosInteres.push(evento);
-//         this.guardarEnStorage();
-//         console.log(
-//           `${evento.nombre} con ID ${evento.id} agregado a mi agenda`
-//         );
-//       } else {
-//         console.log(`Evento ya existe en la agenda`);
-//       }
-//     };
-
-//     this.mostrarAgenda = function () {
-//       if (this.eventosInteres.length === 0) {
-//         console.log("Mi agenda esta vacia");
-//       } else {
-//         console.log(this.eventosInteres);
-//       }
-//     };
-
-//     this.guardarEnStorage = function () {
-//       localStorage.setItem("agenda", JSON.stringify(this.eventosInteres));
-//     };
-
-//     this.existeEvento = function (idEvento) {
-//       //buscco si el evento existe
-//       return this.eventosInteres.some((aux) => aux.id === idEvento);
-//     };
-
-//     this.eliminarEvento = function (idEvento) {
-//       if (this.existeEvento(idEvento)) {
-//         this.eventosInteres = this.eventosInteres.filter(
-//           (aux) => aux.id !== idEvento
-//         );
-//         this.guardarEnStorage();
-//         console.log(`${idEvento} eliminado de mi agenda.`);
-//       } else {
-//         console.log(`El evento "${idEvento}" no está en la agenda.`);
-//       }
-//     };
-//   }
-// }
-// agenda.agregarEvento(listaEventos[4]);
-// agenda.mostrarAgenda();
-// agenda.eliminarEvento(3);
-// agenda.mostrarAgenda();
-
+//----------------------------------------------INICIO Construccion HTML---------------------------------------------------//
 const contenedor = document.getElementById("lista-eventos");
 listaEventos.forEach((evento) => {
   const card = document.createElement("article");
@@ -130,53 +75,53 @@ listaEventos.forEach((evento) => {
                       <p id="fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
                       <div class="event-info-buttons" id:"botones">
                         <a href="${evento.enlace}" target="_blank" class="event-info-link" id="enlace">Más información</a>
-                        <button class="event-like-link" data-nombre="${evento.nombre}" data-eventoid="${evento.id}" id="like">Me interesa</button>
+                        <button class="event-like-link" data-nombre="${evento.nombre}" data-eventoid="${evento.id}" id="like">Agregar</button>
                       </div>
                     </div>`;
   contenedor.appendChild(card);
 });
+//----------------------------------------------FIN Construccion HTML---------------------------------------------------//
+//----------------------------------------------INICIO Comparación Agenda con Lista total de Eventos---------------------------//
+function buscarIndexEventosInteres(idEvento) {
+  return agenda.eventosInteres.findIndex(
+    (auxEvento) => auxEvento.id === idEvento
+  );
+}
+function deshabilitarBotonesGuardados() {
+  const listaLikeButtonsActualizar = document.querySelectorAll("#like"); //Lista de los botones "Me Interes" de cada evento
+  listaLikeButtonsActualizar.forEach((auxButon) => {
+    let idEvento = Number(auxButon.dataset.eventoid); // Suponiendo que el botón tiene `data-eventoid="ID Evento"`
+    let auxIndice = buscarIndexEventosInteres(idEvento); //Comprueba si existe el evento en la lista de eventos
+    // console.log("auxIndice es", auxIndice);
+    if (auxIndice > -1) {
+      auxButon.textContent = "Eliminar"; // Cambia el texto del botón
+      auxButon.classList.add("event-like-disabled"); // Deshabilita el botón
+    }
+  });
+}
+deshabilitarBotonesGuardados();
+//----------------------------------------------FIN Comparación Agenda con Lista total de Eventos--------------------//
 
-function buscarIndiceEvento(idEvento) {
+function buscarIndexListaEventos(idEvento) {
   return listaEventos.findIndex((auxEvento) => auxEvento.id === idEvento);
 }
-// function alertSuccess(texto) {
-//   Toastify({
-//     text: `Evento "${texto}" agregado con exito!`,
-//     className: "toast-success", // Para el caso de éxito
-//     duration: 3000,
-//     gravity: "top",
-//     position: "right",
-//     stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
-//   }).showToast();
-// }
-// function alertError() {
-//   Toastify({
-//     text: `Evento "${texto}" agregado con exito!`,
-//     className: "toast-error", // Para el caso de error
-//     duration: 3000,
-//     gravity: "top",
-//     position: "right",
-//     stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
-//   }).showToast();
-// }
-
 const listaLikeButtons = document.querySelectorAll("#like"); //busca todos los botones "Me Interesa"
 listaLikeButtons.forEach((auxButon) => {
   auxButon.addEventListener("click", function () {
     let idEvento = Number(this.dataset.eventoid); // Suponiendo que el botón tiene `data-eventoid="ID Evento"`
     // console.log("idEvento es", idEvento);
-    let auxIndice = buscarIndiceEvento(idEvento);
+    let auxIndice = buscarIndexListaEventos(idEvento);
     // console.log("auxIndice es", auxIndice);
     if (auxIndice > -1) {
-      agenda.agregarEvento(listaEventos[auxIndice]);
-    } else {
-      console.log("Evento no se agregó.");
-    }
-    if (
-      !agenda.eventosInteres.some((auxEvento) => auxEvento.nombre === idEvento)
-    ) {
-      this.textContent = "Guardado"; // Cambia el texto del botón
-      this.classList.add("disabled-btn"); // Deshabilita el botón
+      if (this.textContent === "Eliminar") {
+        agenda.eliminarEvento(listaEventos[auxIndice]);
+        this.textContent = "Agregar"; // Cambia el texto del botón
+        this.classList.remove("event-like-disabled"); // Deshabilita el botón
+      } else {
+        agenda.agregarEvento(listaEventos[auxIndice]);
+        this.textContent = "Eliminar"; // Cambia el texto del botón
+        this.classList.add("event-like-disabled"); // Deshabilita el botón
+      }
     }
     agenda.mostrarAgenda();
   });
@@ -184,7 +129,6 @@ listaLikeButtons.forEach((auxButon) => {
 
 const todosLosEventos = document.querySelectorAll(".event-card"); //lista de todos los eventos
 const buscar = document.getElementById("buscar"); //input "buscar"
-
 buscar.addEventListener("input", function () {
   const buscarText = buscar.value
     .normalize("NFD")

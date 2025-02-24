@@ -108,11 +108,14 @@ main {
 .event-like-link:hover {
   background: #970101;
 }
-.disabled-btn {
-  background-color: gray;
-  cursor: not-allowed;
+.event-like-disabled {
+  background-color: rgb(81, 81, 81);
+  cursor: pointer;
   opacity: 0.6;
-  pointer-events: none; /* Evita interacción */
+  /* pointer-events: none; Evita interacción */
+}
+.event-like-disabled:hover {
+  background-color: rgb(34, 34, 34);
 }
 .toast-success {
   background: #4caf50; /* Verde Material Design */
@@ -126,6 +129,16 @@ main {
 }
 .toast-error {
   background: #f44336; /* Rojo Material Design */
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+}
+.toast-eliminated {
+  background: #ffb300; /* Amarillo ámbar */
   color: white;
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
