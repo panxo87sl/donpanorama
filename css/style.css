@@ -138,7 +138,7 @@ main {
   padding: 12px 20px;
 }
 .toast-eliminated {
-  background: #ffb300; /* Amarillo ámbar */
+  background: #2196f3; /* Azul Material Design */
   color: white;
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
