@@ -30,6 +30,7 @@ nav {
 .icon-container {
   position: relative;
   display: flex;
+  cursor: pointer;
 }
 .notification-badge {
   position: absolute;

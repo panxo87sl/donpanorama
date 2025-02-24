@@ -16,7 +16,7 @@ export default class MiAgenda {
           className: "toast-success", // Para el caso de éxito
           duration: 3000,
           gravity: "top",
-          position: "right",
+          position: "center",
           stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
         }).showToast();
       } else {
@@ -26,7 +26,7 @@ export default class MiAgenda {
           className: "toast-error", // Para el caso de error
           duration: 3000,
           gravity: "top",
-          position: "right",
+          position: "center",
           stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
         }).showToast();
       }
@@ -63,7 +63,7 @@ export default class MiAgenda {
           className: "toast-eliminated", // Para el caso de éxito
           duration: 3000,
           gravity: "top",
-          position: "right",
+          position: "center",
           stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
         }).showToast();
       } else {

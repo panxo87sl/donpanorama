@@ -142,7 +142,7 @@ listaLikeButtons.forEach((auxButon) => {
 
 const modal = document.getElementById("modal-agenda");
 const modalBody = document.getElementById("modal-body");
-const calendarIcon = document.querySelector(".material-icons");
+const calendarIcon = document.querySelector(".icon-container");
 
 calendarIcon.addEventListener("click", () => {
   modalBody.innerHTML = ""; //Re reinicia el contenido del Modal
