@@ -11,8 +11,24 @@ export default class MiAgenda {
         console.log(
           `${evento.nombre} con ID ${evento.id} agregado a mi agenda`
         );
+        Toastify({
+          text: `Evento "${evento.nombre}" agregado con exito!`,
+          className: "toast-success", // Para el caso de éxito
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
+        }).showToast();
       } else {
         console.log(`Evento ya existe en la agenda`);
+        Toastify({
+          text: `Evento "${evento.nombre}" ya está en tu agenda`,
+          className: "toast-error", // Para el caso de error
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
+        }).showToast();
       }
     };
 

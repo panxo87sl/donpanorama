@@ -139,26 +139,26 @@ listaEventos.forEach((evento) => {
 function buscarIndiceEvento(idEvento) {
   return listaEventos.findIndex((auxEvento) => auxEvento.id === idEvento);
 }
-function alertSuccess(texto) {
-  Toastify({
-    text: `Evento "${texto}" agregado con exito!`,
-    className: "toast-success", // Para el caso de éxito
-    duration: 3000,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
-  }).showToast();
-}
-function alertError() {
-  Toastify({
-    text: `Evento "${texto}" agregado con exito!`,
-    className: "toast-error", // Para el caso de error
-    duration: 3000,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
-  }).showToast();
-}
+// function alertSuccess(texto) {
+//   Toastify({
+//     text: `Evento "${texto}" agregado con exito!`,
+//     className: "toast-success", // Para el caso de éxito
+//     duration: 3000,
+//     gravity: "top",
+//     position: "right",
+//     stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
+//   }).showToast();
+// }
+// function alertError() {
+//   Toastify({
+//     text: `Evento "${texto}" agregado con exito!`,
+//     className: "toast-error", // Para el caso de error
+//     duration: 3000,
+//     gravity: "top",
+//     position: "right",
+//     stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
+//   }).showToast();
+// }
 
 const listaLikeButtons = document.querySelectorAll("#like"); //busca todos los botones "Me Interesa"
 listaLikeButtons.forEach((auxButon) => {
@@ -169,7 +169,6 @@ listaLikeButtons.forEach((auxButon) => {
     // console.log("auxIndice es", auxIndice);
     if (auxIndice > -1) {
       agenda.agregarEvento(listaEventos[auxIndice]);
-      alertSuccess(this.dataset.nombre);
     } else {
       console.log("Evento no se agregó.");
     }
