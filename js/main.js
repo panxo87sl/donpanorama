@@ -102,6 +102,18 @@ function deshabilitarBotonesGuardados() {
 deshabilitarBotonesGuardados();
 //----------------------------------------------FIN Comparación Agenda con Lista total de Eventos--------------------//
 
+function actualizarNotificacion() {
+  const notificacion = document.getElementById("notification-badge");
+  const cantidadEventos = agenda.eventosInteres.length;
+  notificacion.textContent = cantidadEventos;
+  if (cantidadEventos > 0) {
+    notificacion.style.background = "red";
+  } else {
+    notificacion.style.background = "grey";
+  }
+}
+actualizarNotificacion();
+
 function buscarIndexListaEventos(idEvento) {
   return listaEventos.findIndex((auxEvento) => auxEvento.id === idEvento);
 }
@@ -123,6 +135,7 @@ listaLikeButtons.forEach((auxButon) => {
         this.classList.add("event-like-disabled"); // Deshabilita el botón
       }
     }
+    actualizarNotificacion();
     agenda.mostrarAgenda();
   });
 });

@@ -13,6 +13,10 @@
     />
     <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
@@ -22,7 +26,17 @@
     <header>
       <nav>
         <h1>Eventos y Panoramas</h1>
-        <input type="text" placeholder="Buscar nombre o lugar..." id="buscar" />
+        <div class="nav-input">
+          <input
+            type="text"
+            placeholder="Buscar nombre o lugar..."
+            id="buscar"
+          />
+          <div class="icon-container">
+            <i class="material-icons">event</i>
+            <span id="notification-badge" class="notification-badge">0</span>
+          </div>
+        </div>
         <!-- <div class="user-options">
           <button>Iniciar sesión</button>
           <button>Registrarse</button>
