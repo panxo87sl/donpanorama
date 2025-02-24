@@ -18,7 +18,7 @@ export default class MiAgenda {
 
     this.mostrarAgenda = function () {
       if (this.eventosInteres.length === 0) {
-        console.log("Mi agenda esta vacia");
+        console.log("Mi agenda: No hay eventos");
       } else {
         console.log("Mi agenda: ", this.eventosInteres);
       }
