@@ -140,6 +140,38 @@ listaLikeButtons.forEach((auxButon) => {
   });
 });
 
+const modal = document.getElementById("modal-agenda");
+const modalBody = document.getElementById("modal-body");
+const calendarIcon = document.querySelector(".material-icons");
+
+calendarIcon.addEventListener("click", () => {
+  modalBody.innerHTML = ""; //Re reinicia el contenido del Modal
+  modal.style.display = "flex"; // Muestra el modal
+  if (agenda.eventosInteres.length > 0) {
+    agenda.eventosInteres.forEach((evento) => {
+      const modalCard = document.createElement("article");
+      modalCard.classList.add("modal-event-card");
+      modalCard.innerHTML = `<img src="${evento.imagen}" alt="${evento.nombre}"/>
+                    <div class="modal-event-info" id="informacion">
+                      <h2>${evento.nombre}</h2>
+                      <p id="lugar"><strong>Lugar:</strong> ${evento.lugar}</p>
+                      <p id="fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
+                    </div>`;
+      modalBody.appendChild(modalCard);
+    });
+  } else {
+    modalBody.innerHTML = `<div class="modal-event-info" id="informacion">
+                            <h3>No hay eventos en la agenda</h3>
+                          </div>`;
+  }
+});
+// Cerrar modal si se hace clic fuera del contenido
+window.addEventListener("click", (aux) => {
+  if (aux.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
 const todosLosEventos = document.querySelectorAll(".event-card"); //lista de todos los eventos
 const buscar = document.getElementById("buscar"); //input "buscar"
 buscar.addEventListener("input", function () {
