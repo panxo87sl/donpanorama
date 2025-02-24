@@ -125,33 +125,39 @@ listaEventos.forEach((evento) => {
   card.innerHTML = `<img src="${evento.imagen}" alt="${evento.nombre}"/>
                     <div class="event-info" id="informacion">
                       <h2>${evento.nombre}</h2>
-                      <p id:"productora" ><strong>Productora:</strong> ${evento.productora}</p>
-                      <p id:"lugar"><strong>Lugar:</strong> ${evento.lugar}</p>
-                      <p id:"fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
-                      <p id:"id-evento"><strong>ID:</strong> ${evento.id}</p>
+                      <p id="productora" ><strong>Productora:</strong> ${evento.productora}</p>
+                      <p id="lugar"><strong>Lugar:</strong> ${evento.lugar}</p>
+                      <p id="fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
                       <div class="event-info-buttons" id:"botones">
-                        <a href="${evento.enlace}" target="_blank" class="event-info-link" id:"enlace">Más información</a>
-                        <a href="#" class="event-like-link" data-id:"${evento.id}" id:"like">Me interesa</a>
+                        <a href="${evento.enlace}" target="_blank" class="event-info-link" id="enlace">Más información</a>
+                        <a class="event-like-link" data-eventoid="${evento.id}" id="like">Me interesa</a>
                       </div>
                     </div>`;
   contenedor.appendChild(card);
 });
 
 function buscarIndiceEvento(idEvento) {
-  return listaEventos.findIndex((evento) => evento.id === idEvento);
+  return listaEventos.findIndex((auxEvento) => auxEvento.id === idEvento);
 }
-const listaLikeButtons = document.querySelectorAll(".event-like-link"); //busca todos los botones "Me Interesa"
+function disableButton(button) {}
+const listaLikeButtons = document.querySelectorAll("#like"); //busca todos los botones "Me Interesa"
 console.log(listaLikeButtons);
 listaLikeButtons.forEach((auxButon) => {
   auxButon.addEventListener("click", function () {
-    let idEvento = this.dataset.id; // Suponiendo que el botón tiene `data-nombre="Nombre Evento"`
-    console.log("Evento es", idEvento);
+    let idEvento = Number(this.dataset.eventoid); // Suponiendo que el botón tiene `data-nombre="Nombre Evento"`
+    console.log("idEvento es", idEvento);
     let auxIndice = buscarIndiceEvento(idEvento);
-
-    if (auxIndice !== -1) {
+    console.log("auxIndice es", auxIndice);
+    if (auxIndice > -1) {
       agenda.agregarEvento(listaEventos[auxIndice]);
     } else {
-      console.log("Evento no encontrado.");
+      console.log("Evento no se agregó.");
+    }
+    if (
+      !agenda.eventosInteres.some((auxEvento) => auxEvento.nombre === idEvento)
+    ) {
+      this.textContent = "Guardado"; // Cambia el texto del botón
+      this.classList.add("disabled-btn"); // Deshabilita el botón
     }
     agenda.mostrarAgenda();
   });

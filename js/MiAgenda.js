@@ -29,7 +29,7 @@ export default class MiAgenda {
     };
 
     this.existeEvento = function (idEvento) {
-      //buscco si el evento existe
+      //busco si el evento existe
       return this.eventosInteres.some((aux) => aux.id === idEvento);
     };
 
