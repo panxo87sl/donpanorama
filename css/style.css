@@ -97,6 +97,10 @@ main {
   color: white;
   text-decoration: none;
   border-radius: 5px;
+  border: none; /* Elimina el borde */
+  cursor: pointer; /* Mantiene el cursor de botón */
+  font-size: inherit; /* Mantiene el tamaño de fuente del texto */
+  font-family: inherit; /* Usa la misma fuente del sitio */
 }
 .event-like-link:hover {
   background: #970101;

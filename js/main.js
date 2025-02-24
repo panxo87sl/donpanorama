@@ -61,7 +61,7 @@ function baseEventos() {
   listaEventos.push(evento1, evento2, evento3, evento4, evento5, evento6);
 }
 baseEventos();
-console.log(listaEventos);
+console.log("Lista de eventos: ", listaEventos);
 agenda.mostrarAgenda();
 //----------------------------------------------FIN Carga de datos---------------------------------------------------//
 
@@ -130,7 +130,7 @@ listaEventos.forEach((evento) => {
                       <p id="fecha"><strong>Fecha:</strong> ${evento.fecha}</p>
                       <div class="event-info-buttons" id:"botones">
                         <a href="${evento.enlace}" target="_blank" class="event-info-link" id="enlace">Más información</a>
-                        <a class="event-like-link" data-eventoid="${evento.id}" id="like">Me interesa</a>
+                        <button class="event-like-link" data-eventoid="${evento.id}" id="like">Me interesa</button>
                       </div>
                     </div>`;
   contenedor.appendChild(card);
@@ -139,15 +139,14 @@ listaEventos.forEach((evento) => {
 function buscarIndiceEvento(idEvento) {
   return listaEventos.findIndex((auxEvento) => auxEvento.id === idEvento);
 }
-function disableButton(button) {}
+
 const listaLikeButtons = document.querySelectorAll("#like"); //busca todos los botones "Me Interesa"
-console.log(listaLikeButtons);
 listaLikeButtons.forEach((auxButon) => {
   auxButon.addEventListener("click", function () {
     let idEvento = Number(this.dataset.eventoid); // Suponiendo que el botón tiene `data-nombre="Nombre Evento"`
-    console.log("idEvento es", idEvento);
+    // console.log("idEvento es", idEvento);
     let auxIndice = buscarIndiceEvento(idEvento);
-    console.log("auxIndice es", auxIndice);
+    // console.log("auxIndice es", auxIndice);
     if (auxIndice > -1) {
       agenda.agregarEvento(listaEventos[auxIndice]);
     } else {
