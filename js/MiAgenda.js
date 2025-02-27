@@ -2,6 +2,7 @@ export default class MiAgenda {
   constructor() {
     //Inicializo "el carrito" si es que esta en localStoge si no vacio.
     this.eventosInteres = JSON.parse(localStorage.getItem("agenda")) || [];
+    this.timeToast = 2000;
 
     this.agregarEvento = function (evento) {
       if (!this.existeEvento(evento.id)) {
@@ -12,9 +13,9 @@ export default class MiAgenda {
           `${evento.nombre} con ID ${evento.id} agregado a mi agenda`
         );
         Toastify({
-          text: `Evento "${evento.nombre}" agregado con exito!`,
+          text: `Evento Agregado!👍 "${evento.nombre}"`,
           className: "toast-success", // Para el caso de éxito
-          duration: 3000,
+          duration: `${this.timeToast}`,
           gravity: "top",
           position: "center",
           stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
@@ -24,11 +25,12 @@ export default class MiAgenda {
         Toastify({
           text: `Evento "${evento.nombre}" ya está en tu agenda`,
           className: "toast-error", // Para el caso de error
-          duration: 3000,
+          duration: `${this.timeToast}`,
           gravity: "top",
           position: "center",
           stopOnFocus: true, // NO se detiene si el usuario pasa el cursor
         }).showToast();
+        //segun el flujo del usuario este caso no existe (actualizacion Entrega 3)
       }
     };
 
@@ -59,9 +61,9 @@ export default class MiAgenda {
           `${evento.nombre} con ID ${evento.id} eliminado de mi agenda`
         );
         Toastify({
-          text: `Evento "${evento.nombre}" eliminado de mi agenda.`,
+          text: `Evento Eliminado!!❌ "${evento.nombre}"`,
           className: "toast-eliminated", // Para el caso de éxito
-          duration: 3000,
+          duration: `${this.timeToast}`,
           gravity: "top",
           position: "center",
           stopOnFocus: true, // NO se detiene si el usuario pasa el cursor

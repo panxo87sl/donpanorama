@@ -1,3 +1,12 @@
+/* Reglas generales para evitar problemas de margenes y limites */
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 400px;
+}
+/* Reglas generales para evitar problemas de margenes y limites */
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -15,12 +24,21 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  /* max-width: 1200px; <--cambie */
+  max-width: 100%;
+
   margin: 0 auto;
+}
+.nav-right {
+  display: flex;
+  width: 50%;
+  justify-content: start;
+  align-items: center;
 }
 .nav-left {
   display: flex;
-  justify-content: space-between;
+  width: 50%;
+  justify-content: end;
   align-items: center;
   gap: 10px;
 }
@@ -49,9 +67,31 @@ nav {
 }
 input[type="text"] {
   padding: 0.5rem;
-  width: 250px;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+@media (max-width: 500px) {
+  input[type="text"] {
+    display: none; /* Ocupa todo el ancho disponible */
+  }
+}
+@media (max-width: 768px) {
+  input[type="text"] {
+    max-width: 150px; /* Ocupa todo el ancho disponible */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  input[type="text"] {
+    max-width: 300px; /* Un poco más ancho en tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  input[type="text"] {
+    max-width: 500px; /* Más ancho en pantallas grandes */
+  }
 }
 .user-options button {
   padding: 0.5rem 1rem;
@@ -193,9 +233,10 @@ main {
   background: white;
   padding: 20px;
   border-radius: 10px;
-  width: 100%;
+  width: 80%;
+  min-width: 350px;
   max-width: 450px;
-  min-width: 320px;
+
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -219,7 +260,7 @@ main {
   min-width: 200px;
 }
 .modal-event-card img {
-  width: 174px;
+  width: 40%;
   height: auto;
   object-fit: cover;
 }
@@ -234,12 +275,12 @@ main {
   font-size: 10px;
 }
 .modal-event-info h2 {
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
   height: 60px;
 }
 .modal-event-info h3 {
-  font-size: 16px;
+  font-size: 15px;
   margin: 0;
   height: 60px;
   color: grey;
@@ -254,4 +295,11 @@ footer hr {
   width: 80%;
   border: 1px solid #ccc;
   margin: 10px auto;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
 }

@@ -142,6 +142,7 @@ listaLikeButtons.forEach((auxButon) => {
 
 const modal = document.getElementById("modal-agenda");
 const modalBody = document.getElementById("modal-body");
+const closeButton = document.querySelector(".close-btn");
 const calendarIcon = document.querySelector(".icon-container");
 
 calendarIcon.addEventListener("click", () => {
@@ -164,6 +165,10 @@ calendarIcon.addEventListener("click", () => {
                             <h3>No hay eventos en la agenda</h3>
                           </div>`;
   }
+});
+//Cerrar modal si se hace clic en la equis
+closeButton.addEventListener("click", () => {
+  modal.style.display = "none"; // Oculta el modal
 });
 // Cerrar modal si se hace clic fuera del contenido
 window.addEventListener("click", (aux) => {
