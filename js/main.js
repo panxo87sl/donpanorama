@@ -1,4 +1,3 @@
-//----------------------------------------------INICIO Carga de datos---------------------------------------------------//
 import Evento from "./Evento.js";
 import MiAgenda from "./MiAgenda.js";
 const agenda = new MiAgenda();
