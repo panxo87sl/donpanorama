@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- se agrega por un error de google/github -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <!-- se agrega por un error de google/github -->
+    <title>Eventos y Panoramas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-right">
+          <h1>Eventos y Panoramas</h1>
+        </div>
+        <div class="nav-left">
+          <input
+            type="text"
+            placeholder="Buscar nombre o lugar..."
+            id="buscar"
+          />
+          <div class="icon-container">
+            <i class="material-icons">event</i>
+            <span id="notification-badge" class="notification-badge">0</span>
+          </div>
+        </div>
+        <!-- <div class="user-options">
+          <button>Iniciar sesión</button>
+          <button>Registrarse</button>
+        </div> -->
+      </nav>
+    </header>
+    <main>
+      <section class="event-list" id="lista-eventos"></section>
+    </main>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <!-- Para usar import o export el main debe ser type="module" -->
+    <script src="js/main.js" type="module"></script>
+    <div id="modal-agenda" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Mi Agenda</h2>
+        <div id="modal-body" class="modal-body">
+          <!-- Aquí irán los eventos dinámicamente -->
+        </div>
+      </div>
+    </div>
+    <footer>
+      <hr />
+      <p>
+        <strong>Francisco Orellana</strong> - Coder House Comisión: 65360 -
+        Entrega Número 3
+      </p>
+    </footer>
+  </body>
+</html>
